@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,7 +21,13 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<User> fetchAllUser() {
 		
-		return null;
+		return userRepository.findAll();
+	}
+
+	@Override
+	public Optional<User> fetchById(int id) {
+		Optional<User> user = userRepository.findById(id);
+		return user;
 	}
 
 	
