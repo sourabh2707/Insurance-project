@@ -20,9 +20,25 @@ public class User {
 	private String username;
 
 	private int password;
-	
+
 	@OneToMany
 	private List<Premium> premium;
+
+	@OneToMany
+	private List<Settelment> settelment;
+
+	public User() {
+		super();
+	}
+
+	public User(int userId, String username, int password, List<Premium> premium, List<Settelment> settelment) {
+		super();
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.premium = premium;
+		this.settelment = settelment;
+	}
 
 	public int getUserId() {
 		return userId;
@@ -48,11 +64,26 @@ public class User {
 		this.password = password;
 	}
 
-	public User(int userId, String username, int password) {
-		super();
-		this.userId = userId;
-		this.username = username;
-		this.password = password;
+	public List<Premium> getPremium() {
+		return premium;
+	}
+
+	public void setPremium(List<Premium> premium) {
+		this.premium = premium;
+	}
+
+	public List<Settelment> getSettelment() {
+		return settelment;
+	}
+
+	public void setSettelment(List<Settelment> settelment) {
+		this.settelment = settelment;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", premium=" + premium
+				+ ", settelment=" + settelment + "]";
 	}
 
 }
