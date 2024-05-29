@@ -8,6 +8,12 @@ import com.spring.model.User;
 public interface UserService {
 
 	public User saveUser(User user);
+
 	public List<User> fetchAllUser();
+
 	public Optional<User> fetchById(int id);
+
+	public User changePassword(String password, int id);
+
+	public void deleteUserDetails(int id);
 }

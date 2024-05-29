@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,5 +40,17 @@ public class UserController {
 	public ResponseEntity<Optional<User>> getUserById(@PathVariable int id) {
 		Optional<User> user = userServiceImpl.fetchById(id);
 		return ResponseEntity.ok().body(user);
+	}
+
+	@PutMapping("/changepassword/password/{id}")
+	public ResponseEntity<User> updatePassword(@RequestBody String password, @PathVariable int id) {
+		User user1 = userServiceImpl.changePassword(password, id);
+		return ResponseEntity.ok().body(user1);
+	}
+
+	@DeleteMapping("/deleteuser/{id}")
+	public ResponseEntity<String> deleteUserById(@PathVariable int id) {
+		userServiceImpl.deleteUserDetails(id);
+		return ResponseEntity.ok().body("Successfully deleted");
 	}
 }
